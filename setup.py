@@ -1,7 +1,8 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='efb-msg-filter',
+    packages=find_packages(),
     version='0.0.1',
     description='Filter Only Shoudao Message Only for EQS.',
     author='Riley Soong',
