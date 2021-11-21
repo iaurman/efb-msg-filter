@@ -6,7 +6,7 @@ from ehforwarderbot import Middleware, Message
 class FilterMiddleware(Middleware):
     middleware_id: str = "rileysoong.msg_filter"
     middleware_name: str = "EFB MsgFilter Middleware"
-    __version__: str = "0.0.1"
+    __version__: str = "0.0.2"
 
     def __init__(self, instance_id: str = None):
         super().__init__(instance_id)
