@@ -1,6 +1,6 @@
 # efb-msg-filter
 
-Filter Shoudao message for both EQS and EWS.  
+Filter Shoudao message for both [EWS](https://github.com/ehforwarderbot/efb-wechat-slave) and [EQS](https://github.com/milkice233/efb-qq-slave).  
 
 # Purpose
 
