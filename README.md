@@ -1,12 +1,15 @@
 # efb-msg-filter
 
-Filter Only Shoudao Message Only for EQS.  
+Filter Only Shoudao Message Only both EQS and EWS.  
+
+# Purpose
+
+- Block "收到" message from group chats in EQS and EWS. Messages from private chats won't be effected at all.  
+- Also, it blocks some group system messages from cqhttp (an EQS client) like " joined the group ".  
 
 # Notice
 
-- This script is very poorly written, works only with EQS. If you have EWS, it might NOT function normally!!!
-- It blocks "收到" message from group chat. Messages from private chat won't be effected at all.
-- If you wish to block other message from group chat, there isn't a conf file for now. Feel free to fork/copy this repository then rewrite it. Or you can simply add another if in the script.
+If you wish to block other messages, see this as a template. I didn't bother to write a conf file. Feel free to fork.  
 
 # Installation
 
