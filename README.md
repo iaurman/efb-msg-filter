@@ -1,6 +1,6 @@
 # efb-msg-filter
 
-Filter Only Shoudao Message Only both EQS and EWS.  
+Filter Shoudao message for both EQS and EWS.  
 
 # Purpose
 
