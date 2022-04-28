@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='efb-msg-filter',
     packages=find_packages(),
-    version='0.0.3',
+    version='0.0.4',
     description='Filter Shoudao message for both EQS and EWS.',
     author='Riley Soong',
     auther_email='aurman@qq.com',
