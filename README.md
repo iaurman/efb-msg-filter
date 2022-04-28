@@ -6,6 +6,7 @@ Filter Shoudao message for both [EWS](https://github.com/ehforwarderbot/efb-wech
 
 - Block "收到" message from group chats in EQS and EWS. Messages from private chats won't be effected at all.  
 - Also, it blocks some group system messages from cqhttp (an EQS client) like " joined the group ".  
+- Also, add auto-reply feature for WeChat Keaimao Client.
 
 # Notice
 
