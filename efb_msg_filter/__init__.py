@@ -205,7 +205,7 @@ class FilterMiddleware(Middleware):
 
                 # Modify the original message
                 message.text += '\n  - - - - - - Auto Replied - - - - - - \n' + autoreply_content
-                return message
+        return message
 
     @staticmethod
     def matched_irr(text):
