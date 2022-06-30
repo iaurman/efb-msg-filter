@@ -50,6 +50,7 @@ class FilterMiddleware(Middleware):
     def __init__(self, instance_id: str = None):
         super().__init__(instance_id)
         self.load_config()
+        self.load_autoreply_tmpfile()
 
     def load_config(self):
         config_path = efb_utils.get_config_path(self.middleware_id)
@@ -124,6 +125,8 @@ class FilterMiddleware(Middleware):
                 tx = "Current auto-reply:\n\n" + \
                      self.autoreply_tmpfile['reply_text']
 
+        self.load_autoreply_tmpfile()
+
         reply = Message(
             uid=f"__middleware_example_{uuid.uuid4()}__",
             text=tx,
@@ -188,6 +191,10 @@ class FilterMiddleware(Middleware):
             self.autoreply["last_ts"] = icurrent_ts
             self.autoreply["last_wxid"] = iwxid
             return rt
+
+        # If auto-reply is not enabled
+        if self.autoreply_tmpfile['timestamp'] == 0.0:
+            return message
 
         wxid = message.chat.uid
         # Match wxid
