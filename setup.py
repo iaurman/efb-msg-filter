@@ -7,7 +7,7 @@ setup(
     description='Advanced Features For EQS, EWCS, EWS.',
     author='Riley Soong',
     auther_email='aurman@qq.com',
-    url='https://github.com/1ndeed/efb-msg-filter',
+    url='https://github.com/iaurman/efb-msg-filter',
     include_package_data=True,
     install_requires=[
         "ehforwarderbot"
