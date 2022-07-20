@@ -11,7 +11,7 @@ Advanced Features For [EQS](https://github.com/milkice233/efb-qq-slave), [EWCS](
 # Installation
 
 ```
-# pip3 install git+https://github.com/1ndeed/efb-msg-filter
+# pip3 install git+https://github.com/iaurman/efb-msg-filter
 ```
 
 # Commands in Telegram
