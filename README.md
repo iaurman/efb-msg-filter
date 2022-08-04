@@ -14,6 +14,23 @@ Advanced Features For [EQS](https://github.com/milkice233/efb-qq-slave), [EWCS](
 # pip3 install git+https://github.com/iaurman/efb-msg-filter
 ```
 
+# Configuration
+
+`~/.ehforwarderbot/profiles/default/rileysoong.msg_filter/config.yaml`
+
+```
+robot_wxid: wxid_qwericc1cbcfgh      # 可爱猫的robot_wxid也就是你的wxid
+autoreply_delay: 1.5                 # 收到消息后和发送自动回复之间的延迟
+autoreply_freq: 0.3                  # 多少秒后开始下一次自动回复（防止同时多条消息回复刷屏）
+autoreply_wxid_extra:              # 本项目只匹配wxid开头为wxid_的好友
+  - somecoolname                   # 目的是防止回复一些公众号或微信官方服务
+  - nobiesaster69                  # 但一些老微信号的wxid不以wxid_开头
+  - gonnadothis                    # 你需要手动获取这些账号的wxid，并在此文件贴出
+autoreply_presets:
+  - 少爷正在度假⛱️⛱️，QQ、微信消息提醒均已关闭，有重要事情请直接打电话:-)
+  - 少爷正在睡觉💤💤，手机已静音，无法收到消息，你打电话他都听不到的:-)
+```
+
 # Commands in Telegram
 
 Auto-Reply Feature
