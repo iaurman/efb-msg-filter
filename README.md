@@ -4,7 +4,7 @@ Advanced Features For [EQS](https://github.com/milkice233/efb-qq-slave), [EWCS](
 
 # Features
 
-- In group messages. Mute the first "收到" and merge the rest.  
+- In group messages. Mute the first "收到" and "发布/完成 了一个群待办" and merge the rest.  
 - Also, it blocks some group system messages from EQS and EWCS like "... joined the group ...".  
 - Configure Auto-reply feature for EWCS.
 
