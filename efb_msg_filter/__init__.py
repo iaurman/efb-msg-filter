@@ -38,6 +38,7 @@ class FilterMiddleware(Middleware):
     }
     autoreply_tmpfile_path = str(efb_utils.get_data_path(middleware_id)) + '/' + 'cache'
     sdb = {}
+    gndb = {}
     """
         "[group_id]":
         {
@@ -277,6 +278,48 @@ class FilterMiddleware(Middleware):
             else:
                 return implement()
 
+    def groupNotice(self, message: Message):
+        def implement():
+            message.text = '群待办: ' +  "1" + " person"
+            # Record in Shoudao db
+            self.gndb[message.chat.uid] = {
+                'time': time.time(),
+                'text': message.text,
+                'uid': message.uid,
+                'count': 1
+            }
+            message.author = sys_author
+            message.chat.notification = ChatNotificationState.NONE
+            return message
+
+        sys_author = message.chat.make_system_member(
+            uid="__rileysoong.msg_filter.shoudao__",
+            name="EFB Console",
+            middleware=self
+        )
+        # If it's the FIRST shoudao
+        if message.chat.uid not in self.gndb:
+            return implement()
+        # It's a shoudao that needs to be appended to the last shoudao bubble
+        else:
+            # The original shoudao should be valid only within 12 hours
+            if time.time() - self.gndb[message.chat.uid]["time"] < 43200.0:
+                # Update Msg
+                self.gndb[message.chat.uid]["count"] += 1
+                self.gndb[message.chat.uid]["text"] = '群待办: ' + str(self.gndb[message.chat.uid]["count"]) + ' persons'
+
+                message.edit = True
+                message.uid = MessageID(self.gndb[message.chat.uid]["uid"])
+                message.type = MsgType.Text
+                message.text = self.gndb[message.chat.uid]["text"]
+                message.author = sys_author
+                message.chat.notification = ChatNotificationState.NONE
+
+                return message
+            # If not, implement a new one
+            else:
+                return implement()
+
     def process_message(self, message: Message) -> Optional[Message]:
         debug = False
         if debug:
@@ -319,6 +362,8 @@ class FilterMiddleware(Middleware):
                     return self.shoudao(message)
                 elif self.matched_irr(message.text):
                     message.chat.notification = ChatNotificationState.NONE
+                elif message.text == "  - - - - - - - - - - - - - - - \n发布/完成 了一个群待办":
+                    return self.groupNotice(message)
                 elif ' 邀请 ' in message.text and ' 加入了群聊' in message.text:
                     return None
                 elif ' invited ' in message.text and ' to the group chat' in message.text:
