@@ -27,6 +27,7 @@ class FilterMiddleware(Middleware):
         autoreply_freq: 0.3
         autoreply_wxid_extra: [...]
         autoreply_presets: [...]
+        access_token: "1234567890"
     """
     autoreply = {
         "last_wxid": None,
@@ -181,7 +182,7 @@ class FilterMiddleware(Middleware):
                 'event': 'SendTextMsg',
                 'robot_wxid': self.config['robot_wxid'],
             }
-            post('http://192.168.122.132:8090', headers={}, json=param, timeout=30)
+            post('http://192.168.122.132:8090', headers={"Authorization": self.config['access_token']}, json=param, timeout=30)
 
         def too_frequently(icurrent_ts, iwxid):
             rt = False
