@@ -181,7 +181,7 @@ class FilterMiddleware(Middleware):
                 'event': 'SendTextMsg',
                 'robot_wxid': self.config['robot_wxid'],
             }
-            post('http://192.168.31.132:8090', headers={}, json=param, timeout=30)
+            post('http://192.168.122.132:8090', headers={}, json=param, timeout=30)
 
         def too_frequently(icurrent_ts, iwxid):
             rt = False
@@ -364,6 +364,8 @@ class FilterMiddleware(Middleware):
                     message.chat.notification = ChatNotificationState.NONE
                 elif message.text == "  - - - - - - - - - - - - - - - \n发布/完成 了一个群待办":
                     return self.groupNotice(message)
+                elif message.text == None:
+                    pass
                 elif ' 邀请 ' in message.text and ' 加入了群聊' in message.text:
                     return None
                 elif ' invited ' in message.text and ' to the group chat' in message.text:
